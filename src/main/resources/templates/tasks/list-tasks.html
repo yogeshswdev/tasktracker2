@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+	<title>Task Directory</title>
+</head>
+
+<body>
+    <div class="container">
+        
+        <hr>
+        <h3>Task List</h3>
+        
+     
+
+        <hr>
+        <a th:href="@{/tasks/v1/showFormForAdd}" 
+            class="btn btn-primary btn-sm mb-3"> Add Task</a>
+        
+
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                 
+                <tr>
+                    <th>Id</th>
+                    <th>Task Subject</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>No Of Days</th>
+                    <th>Efforts In Hour</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr th:each="tempTask : ${tasks}">
+                
+                    <td th:text="${tempTask.id}" />	
+                    <td th:text="${tempTask.taskSubject}" />	
+                    <td th:text="${tempTask.type}" />	
+                    <td th:text="${tempTask.status}" />	
+                    <td th:text="${tempTask.startDate}" />	
+                    <td th:text="${tempTask.endDate}" />	
+                    <td th:text="${tempTask.noOfDays}" />	
+                    <td th:text="${tempTask.effortsInHour}" />
+                    <td> 
+                        <div class="d-flex justify-content"> 
+
+                        <form th:action="@{/tasks/v1/updateTask}" method="get">
+                            <input type="hidden" name="id" th:value="${tempTask.id}" />
+                            <button type="submit" class="btn btn-primary btn-sm" >Update</button>
+                        </form>
+                        
+                        <form th:action="@{/tasks/v1/delete}" method="get">
+                           <input type="hidden" name="id" th:value="${tempTask.id}" />
+                           <button type="submit" class="btn btn-danger btn-sm" >Delete</button>
+                       </form> 
+                     </div> 
+                  </td>                  
+                </tr>
+            </tbody>		
+        </table>
+
+        <hr>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-danger btn-sm" >Logout</button>
+        </form>
+    </div>
+</body>
+</html>

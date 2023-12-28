@@ -1,0 +1,18 @@
+{
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "driver": "MySQL",
+      "name": "mysql",
+      "connectString": "jdbc:mysql://localhost:3306/task_directory",
+      "database": "task_directory",
+      "username": "springstudent",
+      "password": "springstudent"
+    }
+  ]
+}

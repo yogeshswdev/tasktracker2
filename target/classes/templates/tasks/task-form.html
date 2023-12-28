@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.com">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+	<title>Save Task</title>
+</head>
+<body>
+    <div class="container">
+        <h3>Task Details</h3>
+        <hr>
+        <!-- Display username and role
+        <p>
+            User: <span sec:authentication="principal.username"></span>
+            <br><br>
+            Role(s): <span sec:authentication="principal.authorities"></span>
+        </p>-->
+        <p class="h4 mb-4">Save Task</p>
+        <form action="#" th:action="@{/tasks/v1/save}"
+                         th:object="${task}" method="POST">
+            <input type="text" th:field="*{taskSubject}"
+                    class="form-control mb-4 w-25" placeholder="Task Subject">
+            <input type="text" th:field="*{type}"
+                     class="form-control mb-4 w-25" placeholder="Type">
+            <input type="text" th:field="*{status}"
+                    class="form-control mb-4 w-25" placeholder="Status">
+                    <input type="date" th:field="*{startDate}"
+                            class="form-control mb-4 w-25" placeholder="Start Date">
+                    <input type="date" th:field="*{endDate}"
+                             class="form-control mb-4 w-25" placeholder="End Date">
+                             <input type="text" th:field="*{noOfDays}"
+                            class="form-control mb-4 w-25" placeholder="No Of Days">
+                            <input type="text" th:field="*{effortsInHour}"
+                                    class="form-control mb-4 w-25" placeholder="effortsInHour">
+            <button type="submit" class="btn btn-info col-2">Save</button>
+        </form>
+
+        <hr>
+        <a th:href="@{/tasks/v1/list}">Back to Task List</a>
+    </div>
+</body>
+</html>
