@@ -20,7 +20,7 @@
      
 
         <hr>
-        <a th:href="@{/tasks/v1/showFormForAdd}" 
+        <a th:href="@{/tasks/v1/showFormForAdd}" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')"
             class="btn btn-primary btn-sm mb-3"> Add Task</a>
         
 
@@ -54,12 +54,12 @@
                     <td> 
                         <div class="d-flex justify-content"> 
 
-                        <form th:action="@{/tasks/v1/updateTask}" method="get">
+                        <form th:action="@{/tasks/v1/updateTask}" method="get" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')">
                             <input type="hidden" name="id" th:value="${tempTask.id}" />
                             <button type="submit" class="btn btn-primary btn-sm" >Update</button>
                         </form>
                         
-                        <form th:action="@{/tasks/v1/delete}" method="get">
+                        <form th:action="@{/tasks/v1/delete}" method="get" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')">
                            <input type="hidden" name="id" th:value="${tempTask.id}" />
                            <button type="submit" class="btn btn-danger btn-sm" >Delete</button>
                        </form> 
